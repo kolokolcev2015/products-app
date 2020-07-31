@@ -9,6 +9,6 @@ export const CHANGE_NAME = 'CHANGE_NAME'
 export const CHANGE_COUNT = 'CHANGE_COUNT'
 export const CHANGE_COST = 'CHANGE_COST'
 export const CHANGE_DATE = 'CHANGE_DATE'
-export const GET_CHANGED = 'GET_CHANGED'
 export const CHANGE_TIME = 'GET_TIME'
 
+export const GET_CHANGED = 'GET_CHANGED'

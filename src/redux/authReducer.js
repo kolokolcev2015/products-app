@@ -16,5 +16,4 @@ export const authReducer = (state = initialState,action) => {
             return {isAuth: cookies.remove('Auth', {path: '/'})}
         default: return state
     }
-    return state
 }

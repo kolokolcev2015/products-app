@@ -2,56 +2,49 @@ import React, {Component} from 'react';
 import {render} from "react-dom";
 import {connect} from "react-redux";
 import {deletePost} from "../../redux/actions";
-import TextViewRecord from "./TextViewRecord";
-import InputViewRecord from "./InputViewRecord";
+import TextView from "./Content/TextView";
+import InputViewRecord from "./Content/InputView/InputView";
 import {CHANGE_COST, CHANGE_COUNT, CHANGE_DATE, CHANGE_NAME, CHANGE_TIME} from "../../redux/Types";
 
 
 class Item extends React.Component{
-   constructor() {
-       super();
-       this.state = {
-           clickedName: false,
-           clickedCount: false,
-           clickedCost: false,
-           clickedDate: false,
-           clickedTime: false
-       };
-       this.ClickedTextViewName = this.ClickedTextViewName.bind(this);
-       this.ClickedTextViewCount = this.ClickedTextViewCount.bind(this);
-       this.ClickedTextViewCost = this.ClickedTextViewCost.bind(this);
-       this.ClickedTextViewDate = this.ClickedTextViewDate.bind(this);
-       this.ClickedTextViewTime = this.ClickedTextViewTime.bind(this);
-   }
-    ClickedTextViewCost(){
+
+   state = {
+        clickedName: false,
+        clickedCount: false,
+        clickedCost: false,
+        clickedDate: false,
+        clickedTime: false
+    };
+    ClickedTextViewCost = () =>{
         this.setState( this.state.clickedCost ? {
             clickedCost: false
         } : {
             clickedCost: true
         });
     }
-    ClickedTextViewDate(){
+    ClickedTextViewDate = () =>{
         this.setState( this.state.clickedDate ? {
             clickedDate: false
         } : {
             clickedDate: true
         });
     }
-    ClickedTextViewName(){
-       this.setState( this.state.clickedName ? {
-           clickedName: false
-       } : {
-           clickedName: true
-       });
-    }
-    ClickedTextViewCount(){
+    ClickedTextViewName = () =>{
+    this.setState( this.state.clickedName ? {
+    clickedName: false
+} : {
+    clickedName: true
+});
+}
+    ClickedTextViewCount = () =>{
         this.setState( this.state.clickedCount ? {
             clickedCount: false
         } : {
             clickedCount: true
         });
     }
-    ClickedTextViewTime(){
+    ClickedTextViewTime = () =>{
         this.setState( this.state.clickedTime ? {
             clickedTime: false
         } : {
@@ -79,7 +72,7 @@ class Item extends React.Component{
 function renderTextOrInput(state,name,change,type,id) {
     return(state ?
         <InputViewRecord id={id} plh={name} change={change} type={type}/> :
-        <TextViewRecord value={name} change={change}/>)
+        <TextView value={name} change={change}/>)
 }
 const mapDispathDel={
     deletePost

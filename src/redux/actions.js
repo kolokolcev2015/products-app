@@ -2,26 +2,19 @@ import {
     CHANGE_COST,
     CHANGE_COUNT, CHANGE_DATE,
     CHANGE_NAME,
-    CHANGE_POST, CHANGE_TIME,
+    CHANGE_TIME,
     CREATE_POST,
-    DELETE_POST, GET_CHANGED,
+    DELETE_POST,
     GET_DATA,
     IS_COOKIE_CREATE,
     IS_COOKIE_DELETE,
-    SEARCH_NAME
 } from "./Types";
 import {
     AddItem,
     changeCost,
     changeCount, changeDate, changeName, changeTime,
-    changeValues,
     DelItem,
-    getList,
-    getRequestPassword,
-    getSearchName
 } from "../API/api";
-import {connect} from "react-redux";
-import axios from "axios";
 
  export function createPost(name,count,cost){
     let id = Date.now();
@@ -34,7 +27,7 @@ import axios from "axios";
     let hours = todayDate.getHours()+':'+todayDate.getMinutes();
     let date = currDay+'.'+currMonth+'.'+currYear;
     let time = hours;
-    AddItem(id,name,count,cost,date,time).then(r => console.log(r));
+    AddItem(id,name,count,cost,date,time).then(r => r);
  return{
         type: CREATE_POST,
         payload: {id,name,count,cost,date,time}
@@ -49,12 +42,6 @@ export function deletePost(id) {
     }
 }
 
-export function changePost(id,value) {
-    return{
-        type: CHANGE_POST,
-        payload: {id, value}
-    }
-}
 export function isAuth() {
     return{
         type: IS_COOKIE_CREATE
@@ -77,49 +64,24 @@ export function changeData(type,id,value) {
      switch (type){
         case CHANGE_NAME:
             changeName(id,value).then(r => r)
-            return{
-                type: type,
-                payload: {
-                    id,
-                    value
-                }
-            }
+            return{ type: type,payload: { id, value } }
+
         case CHANGE_COUNT:
             changeCount(id,value).then(r => r)
-            return{
-                type: type,
-                payload: {
-                    id,
-                    value
-                }
-            }
+            return{ type: type,payload: { id, value } }
+
         case CHANGE_COST:
             changeCost(id,value).then(r => r)
-            return{
-                type: type,
-                payload: {
-                    id,
-                    value
-                }
-            }
+            return{ type: type,payload: { id, value } }
+
         case CHANGE_DATE:
             changeDate(id,value).then(r => r)
-            return{
-                type: type,
-                payload: {
-                    id,
-                    value
-                }
-            }
+            return{ type: type,payload: { id, value } }
+
          case CHANGE_TIME:
              changeTime(id,value).then(r => r)
-             return{
-                 type: type,
-                 payload: {
-                     id,
-                     value
-                 }
-             }
+             return{ type: type,payload: { id, value } }
+
         default: console.log("error")
     }
 

@@ -1,12 +1,9 @@
 import axios from 'axios'
-import {CHANGE_COST, CHANGE_COUNT, CHANGE_DATE, CHANGE_NAME} from "../redux/Types";
 
 export const getRequestPassword = (password) => {
     return axios
         .get('http://192.168.56.1/WebApplication1/Home/AuthReact',{
-            params: {
-                pass : password
-            }
+            params: { pass : password }
         })
         .then(request => request)
 }
@@ -19,9 +16,7 @@ export const getList = () =>{
 export const getSearchName = (name) =>{
     return axios
         .get('http://192.168.56.1/WebApplication1/Home/getSearchName',{
-            params:{
-                name: name
-            }
+            params:{ name: name }
         })
         .then(request => request)
 }

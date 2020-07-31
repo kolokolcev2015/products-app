@@ -2,21 +2,14 @@ import {
     CHANGE_COST, CHANGE_COUNT,
     CHANGE_DATE,
     CHANGE_NAME,
-    CHANGE_POST, CHANGE_TIME,
+    CHANGE_TIME,
     CREATE_POST,
     DELETE_POST,
-    GET_CHANGED,
     GET_DATA,
-    SEARCH_NAME
 } from "./Types";
-import {getRequestPassword} from "../API/api";
 
 const initialState ={
-    posts: [
-        // {id: 1, name : "Товар 1", count: "200", cost: "3000", date: "14.07.2020 21:16"},
-       // {id: 2, name : "Товар 2", count: "300", cost: "4000", date: "14.07.2020 21:16"},
-       // {id: 3, name : "Товар 3", count: "400", cost: "5000", date: "14.07.2020 21:16"}
-    ]
+    posts: []
 }
 
 export const postsReducer = (state = initialState,action) => {
@@ -39,5 +32,4 @@ export const postsReducer = (state = initialState,action) => {
             return {posts: state.posts.map(todo => todo.id !== action.payload.id ? todo : {...todo,time: action.payload.value})}
         default: return state
     }
-    return state
 }
